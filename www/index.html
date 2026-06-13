@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob:; frame-src *; media-src * blob:;">
+  <title>SelectionWay</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="screen-web" class="screen active">
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="logo-icon">🎯</div>
+      <div class="logo-text"><span>SELECTION</span>WAY</div>
+    </div>
+    <button class="topbar-btn" onclick="refreshWebView()">🔄</button>
+  </div>
+  <iframe id="webview-frame" src="https://spidyway.vercel.app" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
+  <div id="download-banner">
+    <div class="banner-text" id="banner-filename">Video detected</div>
+    <div class="banner-buttons">
+      <button class="banner-btn primary" onclick="downloadFromBanner()">⬇ Download</button>
+      <button class="banner-btn secondary" onclick="hideBanner()">✕ Dismiss</button>
+    </div>
+  </div>
+</div>
+<div id="screen-downloads" class="screen">
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="logo-icon">📥</div>
+      <div class="logo-text">Downloads</div>
+    </div>
+    <span class="badge" id="dl-badge">0</span>
+  </div>
+  <div class="downloads-list">
+    <div id="downloads-list-inner"></div>
+  </div>
+</div>
+<div id="screen-player" class="screen">
+  <div class="topbar">
+    <button class="topbar-btn" onclick="goBackFromPlayer()">← Back</button>
+    <div class="logo-text" style="flex:1;text-align:center;font-size:14px;" id="player-title">Now Playing</div>
+  </div>
+  <div class="player-wrapper">
+    <video id="video-player" playsinline webkit-playsinline preload="metadata"></video>
+  </div>
+  <div class="player-info">
+    <div class="player-title" id="player-title-big">Video</div>
+  </div>
+  <div class="player-controls">
+    <input type="range" id="seek-bar" class="seek-bar" min="0" max="100" value="0">
+    <div class="time-display">
+      <span id="time-current">0:00</span>
+      <span id="time-duration">0:00</span>
+    </div>
+    <div class="main-controls">
+      <button class="ctrl-btn" onclick="seek(-10)">⏮ 10</button>
+      <button class="ctrl-btn play-pause" id="play-pause-btn" onclick="togglePlayPause()">▶</button>
+      <button class="ctrl-btn" onclick="seek(10)">10 ⏭</button>
+      <button class="speed-btn" onclick="cycleSpeed()"><span id="speed-display">1×</span></button>
+    </div>
+    <div class="volume-row">
+      <span class="volume-icon">🔊</span>
+      <input type="range" id="volume-bar" class="volume-bar" min="0" max="100" value="100">
+    </div>
+  </div>
+</div>
+<nav class="bottom-nav">
+  <button class="nav-btn active" id="nav-web" onclick="showScreen('web')"><span class="nav-icon">🌐</span><span>Browse</span></button>
+  <button class="nav-btn" id="nav-downloads" onclick="showScreen('downloads')"><span class="nav-icon">📥</span><span>Downloads</span></button>
+  <button class="nav-btn" id="nav-player" onclick="showScreen('player')"><span class="nav-icon">▶</span><span>Player</span></button>
+</nav>
+<div id="toast"></div>
+<script src="cordova.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
