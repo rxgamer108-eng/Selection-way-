@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="com.spidyway.app" version="1.0.0"
+  xmlns="http://www.w3.org/ns/widgets"
+  xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+  <name>SelectionWay</name>
+  <description>SpidyUniverse Learning App</description>
+  <author email="user@example.com">Rohan</author>
+
+  <content src="index.html" />
+
+  <access origin="*" />
+  <allow-navigation href="*" />
+  <allow-intent href="*" />
+
+  <platform name="android">
+    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="33" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  </platform>
+
+  <plugin name="cordova-plugin-file" />
+  <plugin name="cordova-plugin-file-transfer" />
+  <plugin name="cordova-plugin-android-permissions" />
+  <plugin name="cordova-plugin-inappbrowser" />
+  <plugin name="cordova-plugin-device" />
+
+  <preference name="DisallowOverscroll" value="true" />
+  <preference name="Orientation" value="default" />
+</widget>
